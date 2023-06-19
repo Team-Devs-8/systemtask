@@ -4,10 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Category;
+use Livewire\WithPagination;
 
 class Categorias extends Component
 {
-    public $categorias;
+    use WithPagination;
+
+
+    //public $categorias;
     public $title;
     public $descripcion;
     public $category_id;
@@ -16,8 +20,8 @@ class Categorias extends Component
 
     public function render()
     {
-        $this->categorias = Category::all();
-        return view('livewire.categorias');
+
+        return view('livewire.categorias',['categorias' => Category::paginate(5)]);
     }
 
     public function crearCategoria()
