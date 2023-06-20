@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
+use PDF;
 
 class Categorias extends Component
 {
@@ -74,5 +75,15 @@ class Categorias extends Component
 
          $this->cerrarModal();
          $this->limpiarInputs();
+    }
+
+    public function generatePdf()
+    {
+        $categorias = Category::all();
+        $pdf = PDF::loadView('livewire.pdfview', ['categorias' => $categorias])->output();
+        return response()->streamDownload(
+            fn () => print($pdf),
+            "archivo.pdf"
+       );
     }
 }

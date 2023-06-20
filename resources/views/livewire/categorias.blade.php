@@ -40,6 +40,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div>
+                <button wire:click="generatePdf()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Generar PDF</button>
+            </div>
             {{$categorias->links()}}
         </div>
     </div>
