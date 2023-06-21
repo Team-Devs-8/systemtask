@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Tarea;
 
+
 class Tareas extends Component
 {
-    public $tareas;
+    use WithPagination;
+    //public $tareas;
     public $titulo;
     public $descripcion;
     public $estado;
@@ -19,7 +22,8 @@ class Tareas extends Component
 
     public function render()
     {
-        $this->tareas = Tarea::all();
-        return view('livewire.tareas');
+        //$this->tareas = Tarea::all();
+        return view('livewire.tareas',['tareas' => Tarea::paginate(5)]);
+        //return view('livewire.tareas');
     }
 }

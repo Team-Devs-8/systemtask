@@ -19,6 +19,7 @@
                         <th class="px-4 py-2">Prioridad</th>
                         <th class="px-4 py-2">Inicio</th>
                         <th class="px-4 py-2">Finalizada</th>
+                        <th class="px-4 py-2">Categoria</th>
                         <th class="px-4 py-2">Acciones</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                             <td class="border px-4 py-2 text-white text-center">{{$tarea->prioridad}}</td>
                             <td class="border px-4 py-2 text-white text-center">{{$tarea->set_at}}</td>
                             <td class="border px-4 py-2 text-white text-center">{{$tarea->finish_at}}</td>
+                            <td class="border px-4 py-2 text-white text-center">{{optional($tarea->categorias)->title}}</td>
                             <td class="border px-4 py-2 text-white text-center">
                                 <button wire:click="editarTarea({{$tarea->id}})" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Editar</button>
                                 <button wire:click="eliminarTarea({{$tarea->id}})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4">Borrar</button>

@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class Categorias extends Component
 {
