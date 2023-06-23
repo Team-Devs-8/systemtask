@@ -15,8 +15,9 @@
             @endif
             <button wire:click="crearCategoria()" class="bg-green-500 hover-green-600 text-white font-bold py-2 px-4">Crear categoría</button>
             @if($modal)
-                @include('livewire.crearCategoria')
+            @include('livewire.crearCategoria')
             @endif
+            <input type="text" wire:model="searchTerm" placeholder="Buscar..." />
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-indigo-600 text-white">

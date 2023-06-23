@@ -14,16 +14,40 @@ class Tareas extends Component
     public $titulo;
     public $descripcion;
     public $estado;
-    public $prioridad;
+    public $prioridades;
+    public $selectedPrioridad;
     public $set_at;
     public $finish_at;
     public $tarea_id;
     public $modal = false;
+    public $searchTerm = '';
 
     public function render()
     {
-        //$this->tareas = Tarea::all();
-        return view('livewire.tareas',['tareas' => Tarea::paginate(5)]);
-        //return view('livewire.tareas');
+        $results = Tarea::where('titulo', 'like', '%'.$this->searchTerm.'%')
+            ->orWhere('descripcion', 'like', '%'.$this->searchTerm.'%')
+            ->paginate(5);
+        return view('livewire.tareas',['tareas' => $results]);
+    }
+
+    public function abrirModal()
+    {
+        $this->modal = true;
+    }
+
+    public function cerrarModal()
+    {
+        $this->modal = false;
+    }
+
+    public function limpiarInputs()
+    {
+        $this->titulo = '';
+        $this->descripcion = '';
+    }
+
+    public function mount()
+    {
+        $this->prioridades = Tarea::getEnumValues('prioridad');
     }
 }

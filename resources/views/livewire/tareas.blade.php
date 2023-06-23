@@ -9,6 +9,7 @@
             @if($modal)
                 @include('livewire.crearTarea')
             @endif
+            <input type="text" wire:model="searchTerm" placeholder="Buscar..." />
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-indigo-600 text-white">
@@ -42,6 +43,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{$tareas->links()}}
         </div>
     </div>
 </div>

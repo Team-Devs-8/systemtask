@@ -17,12 +17,16 @@ class Categorias extends Component
     public $descripcion;
     public $category_id;
     public $modal = false;
+    public $searchTerm = '';
 
 
     public function render()
     {
+        $results = Category::where('title', 'like', '%'.$this->searchTerm.'%')
+            ->orWhere('descripcion', 'like', '%'.$this->searchTerm.'%')
+            ->paginate(5);
 
-        return view('livewire.categorias',['categorias' => Category::paginate(5)]);
+        return view('livewire.categorias',['categorias' => $results]);
     }
 
     public function crearCategoria()
