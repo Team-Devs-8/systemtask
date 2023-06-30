@@ -37,3 +37,13 @@ Route::get('/Introduccion', function () {
 Route::get('/somos', function () {
     return view('content.somos');
 })->name('somos');
+
+
+Route::get('enviar', ['as' => 'enviar', function () {
+    $data = ['link' => 'https://mailtrap.io/'];
+    \Mail::send('emails.notificacion', $data, function ($message) {
+        $message->from('fuuzze@gmail.com', 'MailTrap.Io');
+        $message->to('recupera@micorreo.com')->subject('Correo de Recuperación');
+    });
+    return "Se envío el email";
+}]);
