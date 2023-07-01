@@ -19,13 +19,14 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('calificacion');
             $table->tinyInteger('estado')->default(1);
-            $table->enum('prioridad', ['baja', 'media', 'alta', 'urgente']);
+            $table->string('prioridad');
+            //$table->enum('prioridad', ['baja', 'media', 'alta', 'urgente']);
             $table->timestamp('set_at');
             $table->timestamp('finish_at');
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnUpdate()->nullOnDelete();
-            
+
             //$table->unsignedBigInteger('user_id');
            /*  $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories'); */

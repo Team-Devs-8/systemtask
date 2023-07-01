@@ -14,4 +14,8 @@ class Tarea extends Model
     public function categorias(){
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    protected $casts = [
+        'prioridad' => Prioridad::class
+    ];
 }
