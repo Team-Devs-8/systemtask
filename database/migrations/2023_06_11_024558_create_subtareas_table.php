@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('calificacion');
             $table->tinyInteger('estado')->default(1);
-            $table->enum('prioridad', ['baja', 'media', 'alta', 'urgente']);
+            $table->string('prioridad');
+            //$table->enum('prioridad', ['baja', 'media', 'alta', 'urgente']);
             $table->timestamp('set_at');
             $table->timestamp('finish_at');
             $table->timestamps();
